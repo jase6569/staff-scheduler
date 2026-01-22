@@ -1,0 +1,27 @@
+{
+  "name": "staff-scheduler",
+  "version": "1.0.0",
+  "description": "A simple and efficient staff scheduling application",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_USERNAME/staff-scheduler.git"
+  },
+  "keywords": [
+    "scheduler",
+    "staff",
+    "shift",
+    "employee",
+    "management"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/staff-scheduler/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/staff-scheduler#readme"
+}
