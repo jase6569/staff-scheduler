@@ -1,8 +1,9 @@
-﻿{
+{
   "name": "server",
   "version": "1.0.0",
   "description": "Staff Scheduler API Server",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "prisma generate && tsc",
