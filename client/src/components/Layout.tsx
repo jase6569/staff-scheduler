@@ -1,9 +1,8 @@
-﻿import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export function Layout() {
-  const { isAdmin, role, logout } = useAuth();
+  const { isAdmin, logout } = useAuth();
 
   const navItems = [
     { to: '/', label: 'Schedule', icon: CalendarIcon, showAlways: true },

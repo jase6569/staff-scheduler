@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Role = 'admin' | 'staff';
 
@@ -17,7 +17,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const ADMIN_PASSWORD = 'admin123'; // Change this to your preferred password
+const ADMIN_PASSWORD = 'admin123';
 const STORAGE_KEY = 'staff-scheduler-auth';
 
 interface StoredAuth {
@@ -31,7 +31,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     role: null,
   });
 
-  // Load auth state from localStorage on mount
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
@@ -53,27 +52,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = (password?: string): boolean => {
     let role: Role;
-    
+
     if (password) {
-      // Admin login with password
       if (password === ADMIN_PASSWORD) {
         role = 'admin';
       } else {
         return false;
       }
     } else {
-      // Staff view (no password required)
       role = 'staff';
     }
 
-    const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days
+    const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000;
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ role, expiresAt }));
-    
+
     setAuth({
       isAuthenticated: true,
       role,
     });
-    
+
     return true;
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import { useState, useEffect, useMemo } from 'react';
 import {
   format,
   startOfMonth,
@@ -17,7 +17,7 @@ import { staffApi, venuesApi, assignmentsApi, isCollisionError } from '../api/cl
 import type { Staff, Venue, EventAssignment, CreateAssignmentInput } from '../types';
 import { Modal } from '../components/Modal';
 import { VenueSelect } from '../components/VenueSelect';
-import { LoadingSpinner, EmptyState, ConfirmDialog, StatusBadge } from '../components/Common';
+import { LoadingSpinner, EmptyState, ConfirmDialog } from '../components/Common';
 import { useToast } from '../components/Toast';
 import { useAuth } from '../context/AuthContext';
 
@@ -516,7 +516,6 @@ function AssignmentModal({
     });
   };
 
-  const selectedStaff = staff.find((s) => s.id === staffId);
 
   return (
     <Modal
