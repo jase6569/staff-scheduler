@@ -1,0 +1,54 @@
+﻿generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Staff {
+  id          String            @id @default(uuid())
+  name        String
+  role        String?
+  active      Boolean           @default(true)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  assignments EventAssignment[]
+}
+
+model Venue {
+  id          String            @id @default(uuid())
+  type        String            @default("MARKET")
+  name        String
+  town        String
+  address     String?
+  notes       String?
+  typicalDays String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  assignments EventAssignment[]
+
+  @@unique([name, town])
+}
+
+model EventAssignment {
+  id        String   @id @default(uuid())
+  date      String
+  venueId   String
+  staffId   String
+  startTime String?
+  endTime   String?
+  notes     String?
+  status    String   @default("PLANNED")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  venue Venue @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@unique([date, staffId])
+  @@index([date])
+  @@index([venueId])
+  @@index([staffId])
+}

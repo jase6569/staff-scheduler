@@ -1,0 +1,40 @@
+﻿{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Staff Scheduler API Server",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "prisma generate && tsc",
+    "start": "node dist/index.js",
+    "postinstall": "prisma generate",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:seed": "prisma db seed",
+    "db:push": "prisma db push"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.10.0",
+    "cors": "^2.8.5",
+    "date-fns": "^3.3.1",
+    "date-fns-tz": "^3.1.3",
+    "express": "^4.18.2",
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "@types/uuid": "^9.0.7",
+    "prisma": "^5.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
